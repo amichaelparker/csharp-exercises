@@ -8,54 +8,28 @@ namespace School
 {
     class Program
     {
+        private static List<Student> students = new List<Student>();
+
         static void Main(string[] args)
         {
-            Student adam = new Student("Adam", 1364481);
-            //adam.Name = "Adam Parker";
-            //adam.Id = 1364481;
-            adam.Credits = 60;
-            adam.GPA = 4.0;
+            Student adam = new Student("Adam Parker", 27, 3.5);
+            Student john = new Student("John Shepard", 91, 4.0);
 
-            Console.WriteLine("{0}\n{1}\n{2}\n{3}", adam.Name, adam.Id, adam.GPA, adam.Credits);
+            Console.WriteLine(adam.ToString());
+            Console.WriteLine(adam.GetGradeLevel());
+
+            adam.AddGrade(3, 4);
+
+            Console.WriteLine(adam.ToString());
+            Console.WriteLine(adam.GetGradeLevel());
+
+            Console.WriteLine(john.ToString());
+            Console.WriteLine(john.GetGradeLevel());
+
+            Console.WriteLine(adam.Equals(adam));
+            Console.WriteLine(adam.Equals(john));
+
             Console.ReadLine();
-        }
-    }
-
-    public class Student
-    {
-        public Student(string name, int studentId)
-        {
-            this.name = name;
-            this.studentId = studentId;
-        }
-
-        private string name;
-        private int studentId;
-        private int numberOfCredits;
-        private double gpa;
-
-        public string Name
-        {
-            get { return name; }
-            private set { name = value; }
-        }
-
-        public int Id
-        {
-            get { return studentId; }
-            private set { studentId = value; }
-        }
-
-        public int Credits
-        {
-            get { return numberOfCredits; }
-            set { numberOfCredits = value; }
-        }
-
-        public double GPA
-        {
-            get { return gpa; }
-            set { gpa = value; }
         }
     }
 }
