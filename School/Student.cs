@@ -8,9 +8,10 @@ namespace School
 {
     class Student
     {
-        private static Random randomId = new Random();
-        private int studentId = randomId.Next(1000000, 1999999);
         public string Name { get; set; }
+        private static Random randomId = new Random();
+        private List<int> usedId = new List<int>();
+        private int studentId;
         public int StudentId { get { return studentId; } }
         public int Credits { get; set; }
         public double GPA { get; set; }
@@ -22,6 +23,11 @@ namespace School
             Name = name;
             Credits = numberOfCredits;
             GPA = gpa;
+            do
+            {
+                studentId = randomId.Next(1000000, 1999999);
+            } while (usedId.Contains(studentId));
+            usedId.Add(studentId);
         }
 
         public Student(string name)

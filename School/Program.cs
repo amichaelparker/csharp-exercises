@@ -13,7 +13,7 @@ namespace School
         static void Main(string[] args)
         {
             Student adam = new Student("Adam Parker", 27, 3.5);
-            Student john = new Student("John Shepard", 91, 4.0);
+            Student john = new Student("John Shepard");
 
             Console.WriteLine(adam.ToString());
             Console.WriteLine(adam.GetGradeLevel());
