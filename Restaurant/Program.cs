@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Restaurant
 {
@@ -10,59 +11,47 @@ namespace Restaurant
             TestItems();
 
             // main program logic
-            bool keepRunning = true;
+            Navigation nav = new Navigation();            
 
-            while (keepRunning)
+            while (nav.Running)
             {
-                Console.Write("1) Add New Menu Item\n2) Print Current Menu\n3) Exit\n\nChoice: ");
-                string userInput = Console.ReadLine();
-
-                if (userInput == "1")
-                {
-                    Console.WriteLine();
-                    MenuItem.NewItem();
-                    Console.Clear();
-                } else if (userInput == "2")
-                {
-                    Console.Clear();
-                    Console.WriteLine();
-                    Menu.PrintMenu();
-                } else
-                {
-                    keepRunning = false;
-                } 
+                nav.Options();
             }
         }
         
         public static void TestItems()
         {
             MenuItem appetizerItem = new MenuItem();
-            appetizerItem.name = "Breadsticks";
-            appetizerItem.description = "Bread, now in stick form";
-            appetizerItem.category = "Appetizer";
-            appetizerItem.price = 19.99M;
-            appetizerItem.added = DateTime.Now.AddDays(-8);
+            appetizerItem.Name = "Breadsticks";
+            appetizerItem.Description = "Bread, now in stick form";
+            appetizerItem.Category = "Appetizer";
+            appetizerItem.Price = 19.99M;
+            appetizerItem.Added = DateTime.Now.AddMonths(-2);
+            appetizerItem.Updated = appetizerItem.Added;
 
             MenuItem firstItem = new MenuItem();
-            firstItem.name = "Spaghetti";
-            firstItem.description = "Noodles with sauce";
-            firstItem.category = "Main Course";
-            firstItem.price = 49.99M;
-            firstItem.added = DateTime.Now.AddDays(-1);
+            firstItem.Name = "Spaghetti";
+            firstItem.Description = "Noodles with sauce";
+            firstItem.Category = "Main Course";
+            firstItem.Price = 49.99M;
+            firstItem.Added = DateTime.Now;
+            firstItem.Updated = firstItem.Added;
 
             MenuItem secondItem = new MenuItem();
-            secondItem.name = "Lasagna";
-            secondItem.description = "flat noodles with sauce in the middle";
-            secondItem.category = "Main Course";
-            secondItem.price = 64.99M;
-            secondItem.added = DateTime.Now.AddHours(-5);
+            secondItem.Name = "Lasagna";
+            secondItem.Description = "flat noodles with sauce in the middle";
+            secondItem.Category = "Main Course";
+            secondItem.Price = 64.99M;
+            secondItem.Added = DateTime.Now;
+            secondItem.Updated = secondItem.Added;
 
             MenuItem dessertItem = new MenuItem();
-            dessertItem.name = "Tiramisu";
-            dessertItem.description = "Light, coffee-flavored cake";
-            dessertItem.category = "Dessert";
-            dessertItem.price = 149.99M;
-            dessertItem.added = DateTime.Now.AddDays(-3);
+            dessertItem.Name = "Tiramisu";
+            dessertItem.Description = "Light, coffee-flavored cake";
+            dessertItem.Category = "Dessert";
+            dessertItem.Price = 149.99M;
+            dessertItem.Added = DateTime.Now;
+            dessertItem.Updated = dessertItem.Added;
 
             Menu.AddItem(appetizerItem);
             Menu.AddItem(firstItem);
